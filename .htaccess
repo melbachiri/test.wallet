@@ -1,0 +1,49 @@
+AddDefaultCharset Off
+#AddDefaultCharset utf8
+
+ErrorDocument 403 /baraka/error404
+ErrorDocument 404 /baraka/error404
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteEngine On
+RewriteBase /wallet/
+
+RewriteRule \.(css|jpe?g|gif|ico|png|js)$ - [L]
+
+RewriteRule ^show/ventilation/([0-9]{4})/([0-9]{1,2})/$						files/ventilation.php?y=$1&m=$2 [L]
+RewriteRule ^add/transaction/$						files/add/transaction.php [L]
+RewriteRule ^edit/transaction/([0-9]+)/$			files/edit/transaction.php?id=$1 [L]
+RewriteRule ^delete/transaction/([0-9]+)/$			files/delete/transaction.php?id=$1 [L]
+RewriteRule ^add/CurrentWealth/$					files/CurrentWealth.php [L]
+
+RewriteRule ^add/category/$							files/add/category.php [L]
+RewriteRule ^edit/category/([0-9]+)/$				files/edit/category.php?id=$1 [L]
+RewriteRule ^delete/category/([0-9]+)/$				files/delete/category.php?id=$1 [L]
+
+RewriteRule ^show/categoryContent/([0-9]+)/([0-9]{1,2})/([0-9]{4})/$		files/showCategoryContent.php?id=$1&m=$2&y=$3 [L]
+
+RewriteRule ^show/category/$						files/showCategory.php [L]
+RewriteRule ^show/administration/$					files/showAdmin.php [L]
+
+RewriteRule ^show/investments/$						files/showInvestments.php [L]
+
+RewriteRule ^account/$								files/account.php [L]
+RewriteRule ^forward/$								files/forward.php [L]
+RewriteRule ^research/$								files/research.php [L]
+RewriteRule ^solvency/$								files/solvency.php [L]
+RewriteRule ^regular/$								files/regular.php [L]
+RewriteRule ^chart/$								dep.php [L]
+RewriteRule ^idex/$									files/ExpensesIndex.php [L]
+
+
+RewriteRule ^transaction/([0-9a-z-]+)/([0-9]+)/$	files/transaction.php?id=$2 [L]
+RewriteRule ^category/$								files/category.php [L]
+RewriteRule ^tCategory/([0-9]+)/$					files/edit/tCategory.php?id=$1 [L]
+
+RewriteRule ^tools/tableau-amortissement/$			tools/tabAmrt.php [L]
+
+# Logging
+RewriteRule ^login/$								common/admin/login.php [L]
+RewriteRule ^logout/$								common/admin/logout.php [L]
